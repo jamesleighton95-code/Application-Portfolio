@@ -1,0 +1,30 @@
+h1 {
+  
+text-align: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+
+}
+
+
+table {
+  border-spacing: 30px; 
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+th {
+  font-size: 18px; /* Make general headings bigger */
+}
+
+.sub-heading {
+  font-size: 12px; /* Make text in the colspan heading smaller */
+  text-align: left;
+}
+  td{
+    font-size: 8px;
+    text-align: center;
+  }

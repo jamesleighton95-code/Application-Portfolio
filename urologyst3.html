@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script>
+  if (window.location.pathname === '/login.html') {
+    localStorage.clear();
+  }
+</script>
+  <title></title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1> Urology ST3 Self-Assesment Marking </h1>
+  <table>
+
+<tr>
+    <th> Criteria </th>
+    <th>Selection</th>
+    <th> Points </th>
+    <th> Evidence </th>
+</tr>
+  <tr> 
+    <th colspan="4" class="sub-heading"> Postgraduate degrees and qualifications in medical science </th>
+</tr>
+<tr>
+  <td> How many of the following qualifications have you been awarded? Peer reviewed theses in medical science eg :- DPhil, PhD, MD, MCh, MS 
+  </td>
+<td>
+ <select id="myDropdown" onchange="updatePoints(this)">
+  <option value="0">Select</option>
+  <option value="0">None</option>
+  <option value="6">One or more</option>
+</select>
+</td>
+<td id="pointsDisplay"> 0 </td>
+
+<td> 
+  <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm1">
+    <input type="file" name="fileUpload" id="fileUploadInput1" style="display: none;" onchange="this.form.submit();">
+    <button type="button" onclick="document.getElementById('fileUploadInput1').click();">Upload</button>
+  </form>
+  <div id="uploadedFile"></div>
+  <script>
+    fetch('/latest-upload')
+      .then(res => res.json())
+      .then(file => {
+        if (file) {
+          const username = sessionStorage.getItem('username') || '';
+          document.getElementById('uploadedFile').innerHTML =
+            `<p>Uploaded file: <a href="/uploads/${username}/${file.stored_filename}" target="_blank">${file.original_filename}</a></p>`;
+        } else {
+          document.getElementById('uploadedFile').innerHTML = '<p>No file uploaded yet.</p>';
+        }
+      });
+  </script>
+</td>
+
+</tr>
+
+</table>
+
+
+
+<footer>
+ <a href="Home.html" > Home </a>
+ <a href="/logout">Logout</a>
+</footer>
+ <script src="script.js"></script>
+</body>
+</html>
